@@ -22,7 +22,6 @@ import Alert from "./Alert";
 import Multiselect from "./MultiSelect";
 import { hobbyOptions } from "../Util/initialValues";
 import { useParams } from "react-router";
-import { GETPROFILEIMAGE } from "../Util/ApiUrl";
 
 const RegisterormFields = ({
   loading,
@@ -30,10 +29,10 @@ const RegisterormFields = ({
   onSubmit,
   success,
   error,
-  title
+  title,
 }) => {
   const param = useParams();
-  const tAndCEnabled = formProps.watch("termAndCondition")
+  const tAndCEnabled = formProps.watch("termAndCondition");
   return (
     <CContainer className="p-4">
       {loading ? (
@@ -52,11 +51,9 @@ const RegisterormFields = ({
                   <CCardTitle className="text-center mt-3">{title}</CCardTitle>
                   <CCardBody>
                     <CRow>
-                      {
-                        param.id && <CCol md={12} className="text-center mt-3">
-                        <ProfileImage url={GETPROFILEIMAGE+`${param.id}`} />
-                    </CCol>
-                      }
+                      <CCol md={12} className="text-center mt-3">
+                        <ProfileImage id={param?.id} />
+                      </CCol>
                       <CCol md={6}>
                         <TextInput
                           name="firstName"
@@ -146,13 +143,13 @@ const RegisterormFields = ({
                         />
                       </CCol>
                       <CCol md={6}>
-                          <Multiselect
-                            name="hobby"
-                            label="Hobby"
-                            options={hobbyOptions}
-                            required
-                          />
-                        </CCol>
+                        <Multiselect
+                          name="hobby"
+                          label="Hobby"
+                          options={hobbyOptions}
+                          required
+                        />
+                      </CCol>
                       <CCol md={12}>
                         <TextAreaField
                           name="address"

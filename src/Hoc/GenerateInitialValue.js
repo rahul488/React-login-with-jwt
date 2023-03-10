@@ -26,7 +26,7 @@ const GenerateInitialValue = (Component) => {
         mobileNumber.push({ num: v });
       });
       let defaultValue = hobbyOptions.filter((v) => {
-        return data.hobby.includes(v.value)
+        return data.hobby.includes(v.value);
       });
       setinitialvalue({
         firstName: data.firstName,
@@ -37,7 +37,7 @@ const GenerateInitialValue = (Component) => {
         gender: data.gender,
         age: data.age,
         mobileNumber: mobileNumber,
-        profile: data.fileName,
+        profile: null,
         address: data.address,
         maritalStatus: data.maritalStatus,
         hobby: defaultValue,
