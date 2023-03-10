@@ -17,7 +17,7 @@ const NavBar = () => {
     
 
   return (
-    <CNavbar colorScheme="dark" className="bg-dark">
+    <CNavbar colorScheme="dark" className="bg-dark  sticky-top">
       <CContainer fluid>
         <CNavbarText>PIO-APP</CNavbarText>
         <CButton type="submit" color="light" variant="outline" onClick={handleClick}>

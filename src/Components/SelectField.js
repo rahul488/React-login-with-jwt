@@ -18,7 +18,7 @@ const SelectField = ({ name, valArr, ...props }) => {
   };
 
   return (
-    <>
+    <div className="mt-3">
       <CFormSelect {...config}>
       <option label={'Select'} value={''} />
         {valArr.map((op, i) => (
@@ -32,7 +32,7 @@ const SelectField = ({ name, valArr, ...props }) => {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 

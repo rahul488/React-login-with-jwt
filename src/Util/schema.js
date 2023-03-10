@@ -47,20 +47,29 @@ export const registerSchema = yupResolver(
       .required("This field is required")
       .oneOf([Yup.ref("password"), null], "Password is not same"),
     gender: Yup.string().nullable().required("This field is required"),
-    //hobby: Yup.object().shape().nullable().typeError("This field is required").required("This field is required"),
+    hobby: Yup.array()
+      .min(1, "This field is required")
+      .of(
+        Yup.object().shape({
+          label: Yup.string().required("This field is required"),
+          value: Yup.string().required("This field is required"),
+        })
+      ),
     mobileNumber: Yup.array().of(
       Yup.object().shape({
-        num: Yup.number().nullable().typeError("This field is required")
-        .min(1,'Negative number not allowed')
-        .test('valid number',function(value){
-          if(value.toString().length != 10){
-            return this.createError({
-              message: "Number should be 10 digits length",
-            });
-          }else{
-            return true;
-          }
-        }),
+        num: Yup.number()
+          .nullable()
+          .typeError("This field is required")
+          .min(1, "Negative number not allowed")
+          .test("valid number", function (value) {
+            if (value.toString().length != 10) {
+              return this.createError({
+                message: "Number should be 10 digits length",
+              });
+            } else {
+              return true;
+            }
+          }),
       })
     ),
     profile: Yup.mixed()

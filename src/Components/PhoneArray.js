@@ -31,13 +31,13 @@ const PhoneArray = () => {
              
             />
           </CCol>
-          <CCol md={2} style={{ marginTop: "1.9rem" }}>
+          <CCol md={2} style={{ marginTop: "3rem"}}>
             <CButton color="success" onClick={addNumber}>
               +
             </CButton>
           </CCol>
           {fields.length > 1 && i == 1 && (
-            <CCol md={2} style={{ marginTop: "1.9rem", marginLeft: "-4rem" }}>
+            <CCol md={2} style={{ marginTop: "3rem", marginLeft: "-10rem" }}>
               <CButton color="danger" onClick={() => removeNumber(i)}>
                 -
               </CButton>

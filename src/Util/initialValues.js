@@ -18,3 +18,5 @@ export const registerInitialValues={
     hobby:[],
     termAndCondition:''
 }
+
+export const hobbyOptions = [{value:'coding',label:'Coding'},{value:'debuging',label:'Debuging'},{value:'testing',label:'Testing'}]

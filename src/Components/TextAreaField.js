@@ -1,6 +1,7 @@
 import React from 'react';
 import { CFormTextarea } from '@coreui/react';
 import { useController } from 'react-hook-form';
+import TextEditor from './TextEditor';
 
 const TextAreaField = ({ name, ...props }) => {
     const { field, fieldState } = useController({ name, defaultValue: '' });
@@ -17,10 +18,10 @@ const TextAreaField = ({ name, ...props }) => {
     }
 
     return (
-        <>
+        <div className="mt-3">
             <CFormTextarea {...config} />
             {error?.message ? <span id={`${name}_danger_text`} className="text-danger"><strong>{error.message}</strong></span> : ''}
-        </>
+        </div>
     );
 
 };

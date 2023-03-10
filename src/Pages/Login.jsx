@@ -32,7 +32,7 @@ const Login = () => {
   useEffect(()=>{
     if(data){
       saveTokenInLocalStorage(data);
-      let url = `/register/${data.id}`
+      let url = `/profile/${data.id}`
       setLogin(true)
       navigate(url);
     }

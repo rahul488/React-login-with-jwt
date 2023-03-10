@@ -19,20 +19,24 @@ import SelectField from "./SelectField";
 import TextAreaField from "./TextAreaField";
 import TextInput from "./TextField";
 import Alert from "./Alert";
+import Multiselect from "./MultiSelect";
+import { hobbyOptions } from "../Util/initialValues";
+import { useParams } from "react-router";
+import { GETPROFILEIMAGE } from "../Util/ApiUrl";
 
 const RegisterormFields = ({
   loading,
-  intialLoading,
   formProps,
   onSubmit,
   success,
   error,
+  title
 }) => {
-  const tAndCEnabled = formProps.watch("termAndCondition");
-
+  const param = useParams();
+  const tAndCEnabled = formProps.watch("termAndCondition")
   return (
     <CContainer className="p-4">
-      {loading || intialLoading ? (
+      {loading ? (
         <>
           <div className="d-flex justify-content-center align-items-center">
             <CSpinner color="primary" variant="grow" />
@@ -41,21 +45,24 @@ const RegisterormFields = ({
       ) : (
         <CRow>
           <CCol md={6} className="d-flex justify-content-center w-100 mt-3">
-            <CCard style={{ width: "720px" }} className="register-wrapper">
+            <CCard className="register-wrapper">
               <FormProvider {...formProps}>
                 <form onSubmit={formProps.handleSubmit(onSubmit)}>
                   <Alert success={success} error={error} />
-                  <CCardTitle className="text-center mt-3">Register</CCardTitle>
+                  <CCardTitle className="text-center mt-3">{title}</CCardTitle>
                   <CCardBody>
                     <CRow>
-                      <CCol md={12} className="text-center">
-                        <ProfileImage />
-                      </CCol>
+                      {
+                        param.id && <CCol md={12} className="text-center mt-3">
+                        <ProfileImage url={GETPROFILEIMAGE+`${param.id}`} />
+                    </CCol>
+                      }
                       <CCol md={6}>
                         <TextInput
                           name="firstName"
                           type="text"
                           label="First Name"
+                          placeholder="Enter Your First Name"
                           required
                         />
                       </CCol>
@@ -64,6 +71,7 @@ const RegisterormFields = ({
                           name="lastName"
                           type="text"
                           label="Last Name"
+                          placeholder="Enter Your Last Name"
                           required
                         />
                       </CCol>
@@ -72,6 +80,7 @@ const RegisterormFields = ({
                           name="email"
                           type="text"
                           label="Email"
+                          placeholder="Enter Your Email"
                           required
                         />
                       </CCol>
@@ -81,6 +90,7 @@ const RegisterormFields = ({
                           type="number"
                           label="Age"
                           min={18}
+                          placeholder="Enter Your age"
                           required
                         />
                       </CCol>
@@ -89,6 +99,7 @@ const RegisterormFields = ({
                           name="password"
                           type="password"
                           label="Password"
+                          placeholder="Enter Your Password"
                           required
                         />
                       </CCol>
@@ -97,6 +108,7 @@ const RegisterormFields = ({
                           name="confirmPassword"
                           type="password"
                           label="Confirm Password"
+                          placeholder="Conform Your Password"
                           required
                         />
                       </CCol>
@@ -108,6 +120,7 @@ const RegisterormFields = ({
                           type="file"
                           name="profile"
                           label="Enter your photo"
+                          placeholder="Enter Your Profile"
                         />
                       </CCol>
                       <CCol md={6}>
@@ -115,6 +128,7 @@ const RegisterormFields = ({
                           name="maritalStatus"
                           type="select"
                           label="Marital Status"
+                          placeholder="Enter Your Marital Status"
                           valArr={[
                             { label: "Single", value: "single" },
                             { label: "Married", value: "married" },
@@ -131,14 +145,14 @@ const RegisterormFields = ({
                           required
                         />
                       </CCol>
-                      {/* <CCol md={6}>
+                      <CCol md={6}>
                           <Multiselect
                             name="hobby"
                             label="Hobby"
-                            options={[{id:'sing',value:'singing',label:'Singing'},{id:'playing',value:'playing',label:'Play Cricket'},{id:'dance',value:'dance',label:'Dance'},{id:'watching',value:'watching tv',label:'watching tv'}]}
+                            options={hobbyOptions}
                             required
                           />
-                        </CCol> */}
+                        </CCol>
                       <CCol md={12}>
                         <TextAreaField
                           name="address"

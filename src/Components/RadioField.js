@@ -18,11 +18,13 @@ const RadioField = ({ name, ...props }) => {
   };
 
   return (
-    <>
+    <div className="mt-3">
       <CFormLabel>{label}</CFormLabel>
+      <div className="d-flex gap-2">
       {valArr.map((v,i) => (
         <CFormCheck {...config} key={i} value={v} id={`radio_input_${i}_${name}`} label={v} {...register('gender')} />
       ))}
+      </div>
       {error?.message ? (
         <span id={`${name}_danger_text`} className="text-danger">
           <strong>{error.message}</strong>
@@ -30,7 +32,7 @@ const RadioField = ({ name, ...props }) => {
       ) : (
         ""
       )}
-    </>
+    </div>
   );
 };
 export default RadioField;

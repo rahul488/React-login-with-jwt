@@ -24,10 +24,10 @@ const CheckField = ({ name, ...props }) => {
     }
 
     return (
-        <>
+        <div className="mt-3">
             <CFormCheck {...config} onClick={(e)=>handleClick(e)} value={checkedRef.current?.value}  {...register(name)} />
             {error?.message ? <span id={`${name}_danger_text`} className="text-danger"><strong>{error.message}</strong></span> : ''}
-        </>
+        </div>
     );
 
 };

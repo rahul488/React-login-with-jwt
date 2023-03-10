@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { CFormInput } from '@coreui/react';
 import { useController, useForm, useFormContext } from 'react-hook-form';
 
@@ -21,14 +21,14 @@ const FileInput = ({ name, ...props }) => {
 
     const handleChange = (e) => {
         setValue('profile',e.target.files[0],{shouldValidate:true})
-        profileRef.current=e.target.files[0];
+        profileRef.current=e.target.files[0]
     }
 
     return (
-        <>
+        <div className="mt-3">
             <CFormInput {...config} onChange={handleChange} value={profileRef.current?.value}/>
             {error?.message ? <span id={`${name}_danger_text`} className="text-danger"><strong>{error.message}</strong></span> : ''}
-        </>
+        </div>
     );
 
 };

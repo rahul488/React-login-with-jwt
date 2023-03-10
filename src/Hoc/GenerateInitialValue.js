@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import useFetch from "../hooks/useFetch";
 import { GETCUSTOMERDETAILS } from "../Util/ApiUrl";
+import { hobbyOptions } from "../Util/initialValues";
 
 const GenerateInitialValue = (Component) => {
   const InitialValueProvider = (props) => {
@@ -24,6 +25,9 @@ const GenerateInitialValue = (Component) => {
       data.mobileNumber.map((v) => {
         mobileNumber.push({ num: v });
       });
+      let defaultValue = hobbyOptions.filter((v) => {
+        return data.hobby.includes(v.value)
+      });
       setinitialvalue({
         firstName: data.firstName,
         lastName: data.lastName,
@@ -33,10 +37,10 @@ const GenerateInitialValue = (Component) => {
         gender: data.gender,
         age: data.age,
         mobileNumber: mobileNumber,
-        profile: "",
+        profile: data.fileName,
         address: data.address,
         maritalStatus: data.maritalStatus,
-        hobby: [],
+        hobby: defaultValue,
         termAndCondition: data.termAndConditions,
       });
     };

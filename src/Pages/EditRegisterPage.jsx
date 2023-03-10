@@ -18,16 +18,17 @@ export const EditResgister = ({ initialvalue }) => {
     defaultValues: initialvalue,
   });
 
-  useEffect(() => {
-    if (success) {
-      setTimeout(() => {
-        navigate("/");
-      }, [1000]);
-    }
-  }, [success]);
+  // useEffect(() => {
+  //   if (success) {
+  //     setTimeout(() => {
+  //       navigate("/");
+  //     }, [1000]);
+  //   }
+  // }, [success]);
 
   const onSubmit = async (values) => {
     const formData = new FormData();
+    values.hobby = values.hobby.map((v) => "" +v.value);
     values.mobileNumber = values.mobileNumber.map((v) => "" + v.num);
     Object.keys(values).forEach((k, v) => {
       formData.append(k, values[k]);
@@ -41,6 +42,7 @@ export const EditResgister = ({ initialvalue }) => {
       onSubmit={onSubmit}
       success={success}
       error={error}
+      title={"Update Your Account"}
     />
   );
 };
