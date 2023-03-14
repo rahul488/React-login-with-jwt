@@ -118,3 +118,23 @@ export const registerSchema = yupResolver(
       .required("This field is required"),
   })
 );
+
+export const todoSchema = yupResolver(
+  Yup.object().shape({
+    todoName: Yup.string()
+      .trim()
+      .nullable()
+      .required("This field is required"),
+    status: Yup.string().when('isEdit',{
+      is: exist => {
+        console.log('exisss',exist)
+        return exist
+      },
+      then:()=>Yup.string()
+              .nullable()
+              .typeError("This field is required")
+              .required("This field is required"),
+      otherwise:()=> Yup.string().nullable()
+    })
+  })
+)

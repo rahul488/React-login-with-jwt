@@ -9,6 +9,10 @@ const useLocalStorage = () => {
     localStorage.removeItem(objName);
   };
 
-  return { setValueInLocalStorage, getValueFromLocalStorage, removeValueFromLocalStorage };
+  return {
+    setValueInLocalStorage,
+    getValueFromLocalStorage,
+    removeValueFromLocalStorage,
+  };
 };
 export default useLocalStorage;

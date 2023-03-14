@@ -1,0 +1,98 @@
+.sideBar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  background: #eee;
+  width: 70px;
+  overflow: hidden;
+  transition: 70px 0.2s liner;
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+}
+.sideBar .profile_wrapper {
+  margin-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.profile_wrapper .profile_inner_wrapper {
+  height: auto;
+  width: 100%;
+  padding: 1rem 1rem;
+  border-radius: 100%;
+}
+.profile_img {
+  height: 100%;
+  width: 100%;
+}
+/* .sideBar .sideNav ul{
+  list-style: none;
+  display: flex; 
+  flex-direction: column;
+  justify-content: flex-start;
+
+} */
+.sideBar ul {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.sideBar ul li {
+  padding: 10px 0px;
+  width: 100%;
+  height: 100%;
+  /* border-bottom: 1px solid black; */
+}
+.icon {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+.sideBar .profile_wrapper {
+  margin-top: 60px;
+  border-bottom: 1px solid black;
+}
+.sideBar .link {
+  color: rgb(85, 83, 83);
+  text-decoration: none;
+  text-align: center;
+}
+.link span {
+  margin-left: 70px;
+}
+.sideBar ul li:hover {
+  background-color: #79d3d9;
+  cursor: pointer;
+}
+.sideBar:hover {
+  width: 300px;
+  transition: all 0.5s ease;
+}
+.content {
+  margin: 20px 100px;
+}
+.button_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.todoListWrapper {
+  background: #9eaa14c7;
+  box-shadow: 0.5rem 0.5rem #e3e3ddc7;
+  padding: 0.5rem 0.5rem;
+  margin: 10px 0px;
+}
+.todo {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  flex-wrap: wrap;
+}
+.todoName {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.action_wrapper {
+  display: flex;
+  gap: 1rem;
+}

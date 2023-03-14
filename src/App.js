@@ -4,9 +4,12 @@ import { AuthGuard } from "./Components/AuthGuard";
 import NavBar from "./Components/NavBar";
 import PrivateRoute from "./Components/PrivateRoute";
 import PageNotFound from "./Pages/404Page";
+import DashBoard from "./Pages/Dashboard";
 import EditResgisterWrapper from "./Pages/EditRegisterPage";
 import Login from "./Pages/Login";
+import ProfilePage from "./Pages/ProfilePage";
 import Register from "./Pages/Register";
+import TodoPage from "./Pages/TodoPage";
 
 function App() {
   return (
@@ -16,14 +19,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        <Route
-          path="/profile/:id"
-          element={
-            <PrivateRoute>
-              <EditResgisterWrapper />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/dashboard" element={
+          <PrivateRoute>
+            <DashBoard />
+          </PrivateRoute>
+        }>
+           <Route path="" element={<PrivateRoute><TodoPage /></PrivateRoute>} />
+          <Route path="profile/:id" element={<PrivateRoute><ProfilePage /></PrivateRoute>} />
+        </Route>
         <Route path="/*" element={<PageNotFound />} />
       </Routes>
     </div>

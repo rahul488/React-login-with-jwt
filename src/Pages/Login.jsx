@@ -29,14 +29,14 @@ const Login = () => {
   const navigate = useNavigate();
   const { setLogin, saveTokenInLocalStorage } = useContext(AuthContext);
 
-  useEffect(()=>{
-    if(data){
+  useEffect(() => {
+    if (data) {
       saveTokenInLocalStorage(data);
-      let url = `/profile/${data.id}`
-      setLogin(true)
+      let url = `/dashboard`;
+      setLogin(true);
       navigate(url);
     }
-  },[data])
+  }, [data]);
 
   const onSubmit = async (values) => {
     const payload = {
@@ -57,7 +57,7 @@ const Login = () => {
               </div>
             </>
           ) : (
-            <CCard style={{ width: "400px"}} className="login-wrapper">
+            <CCard style={{ width: "400px" }} className="login-wrapper">
               <FormProvider {...formProps}>
                 <form onSubmit={formProps.handleSubmit(onSubmit)}>
                   <Alert success={success} error={error} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { CFormInput, CFormSelect } from "@coreui/react";
+import { CFormSelect } from "@coreui/react";
 import { useController } from "react-hook-form";
 
 const SelectField = ({ name, valArr, ...props }) => {
@@ -20,7 +20,7 @@ const SelectField = ({ name, valArr, ...props }) => {
   return (
     <div className="mt-3">
       <CFormSelect {...config}>
-      <option label={'Select'} value={''} />
+        <option label={"Select"} value={""} />
         {valArr.map((op, i) => (
           <option label={op.label} value={op.value} key={i} />
         ))}

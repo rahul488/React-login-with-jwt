@@ -1,0 +1,22 @@
+export const todoList=[
+    {
+        name:'Dummy1',
+        id:'3534A'
+    },
+    {
+        name:'Dummy2',
+        id:'3534b'
+    },
+    {
+        name:'Dummy3',
+        id:'3534v'
+    },
+    {
+        name:'Dummy4',
+        id:'3534e'
+    },
+    {
+        name:'Dummy5',
+        id:'3534g'
+    }
+]

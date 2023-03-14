@@ -26,12 +26,12 @@ const Register = () => {
 
   const onSubmit = async (values) => {
     const formData = new FormData();
-    values.hobby = values.hobby.map((v) => "" +v.value);
+    values.hobby = values.hobby.map((v) => "" + v.value);
     values.mobileNumber = values.mobileNumber.map((v) => "" + v.num);
     Object.keys(values).forEach((k, v) => {
       formData.append(k, values[k]);
     });
-      post(REGISTERCUSTOMER, formData);
+    post(REGISTERCUSTOMER, formData);
   };
   return (
     <RegisterormFields

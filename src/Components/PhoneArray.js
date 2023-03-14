@@ -1,10 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { CButton, CCol, CRow } from "@coreui/react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 import TextInput from "./TextField";
 
-const PhoneArray = () => {
-  const { control, register, setValue } = useFormContext();
+const PhoneArray = ({ disabled }) => {
+  const { control } = useFormContext();
   const { fields, append, remove } = useFieldArray({
     name: "mobileNumber",
     control,
@@ -28,17 +28,21 @@ const PhoneArray = () => {
               name={`mobileNumber.${i}.num`}
               label={`Phone${i + 1}`}
               type="number"
-             
+              disabled={disabled}
             />
           </CCol>
-          <CCol md={2} style={{ marginTop: "3rem"}}>
-            <CButton color="success" onClick={addNumber}>
+          <CCol md={2} style={{ marginTop: "3rem" }}>
+            <CButton color="success" onClick={addNumber} disabled={disabled}>
               +
             </CButton>
           </CCol>
           {fields.length > 1 && i == 1 && (
             <CCol md={2} style={{ marginTop: "3rem", marginLeft: "-10rem" }}>
-              <CButton color="danger" onClick={() => removeNumber(i)}>
+              <CButton
+                color="danger"
+                onClick={() => removeNumber(i)}
+                disabled={disabled}
+              >
                 -
               </CButton>
             </CCol>

@@ -1,34 +1,36 @@
-import moment from 'moment';
-import React, { useEffect, useState } from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import useLocalStorage from "../hooks/useLocalStorage";
 
 export const AuthContext = React.createContext(null);
 
-
-export const ContextProvider = props => {
+export const ContextProvider = (props) => {
   const [login, setLogin] = useState(false);
-  const { getValueFromLocalStorage, setValueInLocalStorage, removeValueFromLocalStorage } = useLocalStorage();
+  const {
+    getValueFromLocalStorage,
+    setValueInLocalStorage,
+    removeValueFromLocalStorage,
+  } = useLocalStorage();
 
-  useEffect(()=>{
-    const user = getValueFromLocalStorage('token_rc');
-    if(user){
+  useEffect(() => {
+    const user = getValueFromLocalStorage("token_rc");
+    if (user) {
       if (moment(user.tokenExpireDate).valueOf() < Date.now()) {
         logOut();
-      }else{
+      } else {
         setLogin(true);
       }
     }
-  },[])
+  }, []);
 
   const logOut = () => {
-   setLogin(false);
-   removeValueFromLocalStorage('token_rc');
-  }
+    setLogin(false);
+    removeValueFromLocalStorage("token_rc");
+  };
 
   const saveTokenInLocalStorage = (data) => {
-    setValueInLocalStorage('token_rc',data)
-  }
-
+    setValueInLocalStorage("token_rc", data);
+  };
 
   return (
     <AuthContext.Provider
@@ -36,7 +38,7 @@ export const ContextProvider = props => {
         login,
         logOut,
         setLogin,
-        saveTokenInLocalStorage
+        saveTokenInLocalStorage,
       }}
     >
       {props.children}

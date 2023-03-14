@@ -1,14 +1,12 @@
 import React from "react";
 import { CFormLabel } from "@coreui/react";
-import {
-  useController,
-} from "react-hook-form";
+import { useController } from "react-hook-form";
 import Select from "react-select";
 
 const Multiselect = ({ name, options, ...props }) => {
   const { field, fieldState } = useController({ name, defaultValue: "" });
   const { error } = fieldState;
-  const { label, emptyLabel = false, required, ...rest } = props;
+  const { label, emptyLabel = false, required, disabled, ...rest } = props;
   const {
     value: selectValue,
     onChange: handleChange,
@@ -41,6 +39,7 @@ const Multiselect = ({ name, options, ...props }) => {
         }
         {...restFieldProps}
         {...config}
+        isDisabled={disabled}
       />
       {error?.message ? (
         <span id={`${name}_danger_text`} className="text-danger">

@@ -5,8 +5,6 @@ const TextEditor = () => {
 
   const onEditorStateChange = () => {};
 
-  return (
-   <></>
-  );
+  return <></>;
 };
 export default TextEditor;

@@ -6,6 +6,7 @@ const useFetch = () => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
+  const [message, setMessage] = useState("");
 
   const abortRef = useRef();
 
@@ -47,12 +48,17 @@ const useFetch = () => {
         res = await axios.delete(url, { ...requestOptions });
       }
       let data = await res.data;
+      if (typeof data === "string") {
+        setMessage(data);
+      } else {
+        setMessage("");
+      }
       setData(data);
       setLoading(false);
       setSuccess(true);
       setError(false);
     } catch (error) {
-      console.log("error--", error);
+      setMessage(error.message);
       setData(undefined);
       setError(true);
       setSuccess(false);
@@ -70,6 +76,9 @@ const useFetch = () => {
   const put = async (url, payload) => {
     makeRequest("PUT", url, payload);
   };
+  const del = async (url) => {
+    makeRequest("DELETE", url);
+  };
 
   return {
     data,
@@ -77,8 +86,10 @@ const useFetch = () => {
     get,
     post,
     put,
+    del,
     success,
     error,
+    message,
   };
 };
 export default useFetch;

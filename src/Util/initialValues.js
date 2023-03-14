@@ -19,4 +19,9 @@ export const registerInitialValues={
     termAndCondition:''
 }
 
+export const todoInitialValues = {
+    todoName:'',
+    status:'',
+    isEdit:false
+}
 export const hobbyOptions = [{value:'coding',label:'Coding'},{value:'debuging',label:'Debuging'},{value:'testing',label:'Testing'}]

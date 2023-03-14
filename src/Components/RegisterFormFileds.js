@@ -30,6 +30,8 @@ const RegisterormFields = ({
   success,
   error,
   title,
+  disabled = false,
+  handleEdit,
 }) => {
   const param = useParams();
   const tAndCEnabled = formProps.watch("termAndCondition");
@@ -60,6 +62,7 @@ const RegisterormFields = ({
                           type="text"
                           label="First Name"
                           placeholder="Enter Your First Name"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -69,6 +72,7 @@ const RegisterormFields = ({
                           type="text"
                           label="Last Name"
                           placeholder="Enter Your Last Name"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -78,6 +82,7 @@ const RegisterormFields = ({
                           type="text"
                           label="Email"
                           placeholder="Enter Your Email"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -88,6 +93,7 @@ const RegisterormFields = ({
                           label="Age"
                           min={18}
                           placeholder="Enter Your age"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -97,6 +103,7 @@ const RegisterormFields = ({
                           type="password"
                           label="Password"
                           placeholder="Enter Your Password"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -106,11 +113,12 @@ const RegisterormFields = ({
                           type="password"
                           label="Confirm Password"
                           placeholder="Conform Your Password"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
                       <CCol md={12}>
-                        <PhoneArray />
+                        <PhoneArray disabled={disabled} />
                       </CCol>
                       <CCol md={6}>
                         <FileInput
@@ -118,6 +126,7 @@ const RegisterormFields = ({
                           name="profile"
                           label="Enter your photo"
                           placeholder="Enter Your Profile"
+                          disabled={disabled}
                         />
                       </CCol>
                       <CCol md={6}>
@@ -130,6 +139,7 @@ const RegisterormFields = ({
                             { label: "Single", value: "single" },
                             { label: "Married", value: "married" },
                           ]}
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -139,6 +149,7 @@ const RegisterormFields = ({
                           type="radio"
                           label="Gender"
                           valArr={["Male", "Female"]}
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -147,6 +158,7 @@ const RegisterormFields = ({
                           name="hobby"
                           label="Hobby"
                           options={hobbyOptions}
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -156,6 +168,7 @@ const RegisterormFields = ({
                           row={5}
                           label="Enter your address"
                           placeholder="Maximum 150 characters allowed"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -163,6 +176,7 @@ const RegisterormFields = ({
                         <CheckField
                           name="termAndCondition"
                           label="Accept T&c"
+                          disabled={disabled}
                           required
                         />
                       </CCol>
@@ -170,10 +184,20 @@ const RegisterormFields = ({
                         <CButton
                           type="submit"
                           color="primary"
-                          disabled={!tAndCEnabled}
+                          disabled={!tAndCEnabled || disabled}
                         >
                           Submit
                         </CButton>
+                        {disabled && (
+                          <CButton
+                            color="warning"
+                            style={{ marginLeft: "10px" }}
+                            disabled={!disabled}
+                            onClick={handleEdit}
+                          >
+                            Edit
+                          </CButton>
+                        )}
                       </CCol>
                     </CRow>
                   </CCardBody>
